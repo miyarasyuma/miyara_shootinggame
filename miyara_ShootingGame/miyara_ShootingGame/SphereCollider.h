@@ -8,7 +8,7 @@ private:
 	float radius;        //”¼Œa
 
 public:
-	SphereCollider(T_Location locatiom, float radius);
+	SphereCollider(T_Location location, float radius);
 
 public:
 	bool HitSphere(const SphereCollider* collider) const; //SphereCollider‚ªŒ^“¯Žm‚Ì“–‚½‚è”»’è

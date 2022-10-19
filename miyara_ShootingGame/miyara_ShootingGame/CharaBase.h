@@ -1,12 +1,13 @@
 #pragma once
 #include"SphereCollider.h"
+#include"BulletsBase.h"
 class CharaBase  :  public SphereCollider
 {
 private:
-	//bullets(ポインタ配列)
 	T_Location speed;
 
 protected:
+	BulletsBase** bullets;
 	int* image;
 
 public:
@@ -16,6 +17,6 @@ public:
 	virtual void Update() = 0;
 	virtual void Draw() = 0;
 	virtual void Hit() = 0;
-	//GetBullets();
+	BulletsBase** GetBullets();
 };
 
