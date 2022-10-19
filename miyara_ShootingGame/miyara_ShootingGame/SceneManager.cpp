@@ -1,4 +1,3 @@
-#include<stdio.h>
 #include "SceneManager.h"
 
 //メンバ変数の値を置き換えるのがアップデート関数
