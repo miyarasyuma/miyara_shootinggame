@@ -7,9 +7,9 @@ private:
 	int point;
 
 public:
-	void Update() override;
-	void Draw() override;
-	void Hit() override;
+	virtual void Update() override;
+	virtual void Draw() override;
+	virtual void Hit() override;
 	bool HpCheck();
 	int GetPoint();
 

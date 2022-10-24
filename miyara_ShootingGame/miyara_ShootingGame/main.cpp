@@ -28,7 +28,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	{
 		ClearDrawScreen();
 
-		KeyManager::Update();
 
 		sceneMng.Update(); //シーンの更新処理
 		sceneMng.Draw();   //シーンの描画処理
