@@ -14,3 +14,11 @@ void  StraightBullets::Draw()
 {
 	DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(0, 255, 255));
 }
+
+bool StraightBullets::isScreenOut()
+{
+	//’e‚ªŠ®‘S‚É‰æ–ÊŠO‚És‚­‚ÆÁ‚¦‚é
+	bool ret = (GetLocation().y + GetRadius() <= 0);  
+	return ret;
+
+}

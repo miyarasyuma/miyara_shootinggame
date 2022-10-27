@@ -16,7 +16,28 @@ Player::Player(T_Location location) :CharaBase(location, 10.f, T_Location{2,2}),
 void Player::Update()
 {
 	T_Location newLocation = GetLocation();
-	newLocation.x += 1;
+	//プレイヤー操作キー
+	if (KeyManager::OnKeyPressed(KEY_INPUT_W))//上
+	{
+		newLocation.y -= speed.y;
+	}
+
+	if (KeyManager::OnKeyPressed(KEY_INPUT_A))//左
+	{
+		newLocation.x -= speed.x;
+	}
+
+	if (KeyManager::OnKeyPressed(KEY_INPUT_S))//下
+	{
+		newLocation.y += speed.y;
+	}
+
+	if (KeyManager::OnKeyPressed(KEY_INPUT_D))//右
+	{
+		newLocation.x += speed.x;
+	}
+	
+
 	SetLocation(newLocation);
 
 	int bulletCount;
@@ -27,6 +48,20 @@ void Player::Update()
 			break;
 		}
 		bullets[bulletCount]->Update();
+
+		//画面外に行ったら弾を消す
+		if (bullets[bulletCount]->isScreenOut())//画面外で消えたか確かめる
+		{
+			delete bullets[bulletCount];
+			bullets[bulletCount] = nullptr;
+
+			//配列を前に詰める
+			//if (bullets[bulletCount] == nullptr)
+			//{
+			//	bullets[bulletCount];
+			//}
+
+		}
 	}
 
 	if (KeyManager::OnMouseClick(MOUSE_INPUT_LEFT))
