@@ -5,6 +5,7 @@
 
 Player::Player(T_Location location) :CharaBase(location, 10.f, T_Location{2,2}),score(0),life(10)
 {
+
 	//BulletsBase** bullets
 	bullets = new BulletsBase * [30];
 	for (int i = 0; i < 30; i++)
@@ -56,15 +57,14 @@ void Player::Update()
 			bullets[bulletCount] = nullptr;
 
 			//”z—ñ‚ð‘O‚É‹l‚ß‚é
-			//if (bullets[bulletCount] == nullptr)
-			//{
-			//	bullets[bulletCount];
-			//}
+			if (bullets[bulletCount] == nullptr)
+			{
 
+			}
 		}
 	}
 
-	if (KeyManager::OnMouseClick(MOUSE_INPUT_LEFT))
+	if (KeyManager::OnMousePressed(MOUSE_INPUT_LEFT))
 	{
 		if (bulletCount < 30 && bullets[bulletCount] == nullptr)
 		{

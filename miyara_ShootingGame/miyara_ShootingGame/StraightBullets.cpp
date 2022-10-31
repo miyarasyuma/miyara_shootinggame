@@ -1,6 +1,6 @@
 #include "StraightBullets.h"
 #include"DxLib.h"
-StraightBullets::StraightBullets(T_Location location) :BulletsBase(location, 5.f, 1, T_Location{0,2})
+StraightBullets::StraightBullets(T_Location location) :BulletsBase(location, 5.f, 5, T_Location{0,2})
 {
 
 }
