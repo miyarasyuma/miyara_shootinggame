@@ -53,14 +53,8 @@ void Player::Update()
 		//画面外に行ったら弾を消す
 		if (bullets[bulletCount]->isScreenOut())//画面外で消えたか確かめる
 		{
-			delete bullets[bulletCount];
-			bullets[bulletCount] = nullptr;
-
-			//配列を前に詰める
-			if (bullets[bulletCount] == nullptr)
-			{
-
-			}
+			DeleteBullet(bulletCount);
+			bulletCount--;
 		}
 	}
 
@@ -87,7 +81,7 @@ void Player::Draw()
 	}
 }
 
-void Player::Hit()
+void Player::Hit(int damage)
 {
 
 }

@@ -12,7 +12,7 @@ void  StraightBullets::Update()
 }
 void  StraightBullets::Draw()
 {
-	DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(0, 255, 255));
+	DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(255, 255, 0));
 }
 
 bool StraightBullets::isScreenOut()

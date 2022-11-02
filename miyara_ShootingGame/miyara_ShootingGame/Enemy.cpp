@@ -1,7 +1,7 @@
 #include"DxLib.h"
 #include "Enemy.h"
 
-Enemy::Enemy(T_Location location) :CharaBase(location, 20.f, T_Location{0,0.5}),hp(10),point(10)
+Enemy::Enemy(T_Location location) :CharaBase(location, 2.f, T_Location{0,0.5}),hp(10),point(10)
 {
 
 }
@@ -18,10 +18,18 @@ void Enemy::Draw()
 	DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(255, 0, 255));
 }
 
-void Enemy::Hit()//Enemy
+void Enemy::Hit(int damage)//Enemy
 {
-
+	if (0 < damage)
+	{
+		hp -= damage;
+		if (hp < 0)
+		{
+			hp = 0;
+		}
+	}
 }
+
 bool Enemy::HpCheck()//Enemy‚Ì‘Ì—Í	
 {
 	//‚O‚É‚È‚Á‚½‚çtrue,0ˆÈŠOfalse
