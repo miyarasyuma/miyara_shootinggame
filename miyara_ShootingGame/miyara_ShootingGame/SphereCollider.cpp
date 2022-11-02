@@ -26,7 +26,7 @@ bool SphereCollider::HitSphere(const SphereCollider* collider) const
 	vectorLength = sqrtf(vectorLength);
 
 	//Ž©•ª‚Æ‘ŠŽè‚Ì”¼Œa‚Ì‡Œv’l‚ðŒvŽZ
-	float sumRadius = radius * collider->GetRadius();
+	float sumRadius = radius + collider->GetRadius();
 
 	//“–‚½‚è”»’è‚ÌŒ‹‰Ê‚ðŠi”[
 	bool ret = (vectorLength < sumRadius);

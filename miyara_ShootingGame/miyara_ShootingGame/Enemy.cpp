@@ -1,7 +1,7 @@
 #include"DxLib.h"
 #include "Enemy.h"
 
-Enemy::Enemy(T_Location location) :CharaBase(location, 2.f, T_Location{0,0.5}),hp(10),point(10)
+Enemy::Enemy(T_Location location) :CharaBase(location, 20.f, T_Location{0,0.5}),hp(10),point(10)
 {
 
 }
