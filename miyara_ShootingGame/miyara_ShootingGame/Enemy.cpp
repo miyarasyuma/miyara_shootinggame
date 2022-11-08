@@ -15,7 +15,7 @@ void Enemy::Update()
 
 void Enemy::Draw()
 {
-	DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(255, 0, 255));
+	DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(0, 0, 255));
 }
 
 void Enemy::Hit(int damage)//Enemy
@@ -36,6 +36,7 @@ bool Enemy::HpCheck()//Enemy‚Ì‘Ì—Í
 	bool ret = (hp <= 0);
 	return ret;
 }
+
 int Enemy::GetPoint()//
 {
 	return point;

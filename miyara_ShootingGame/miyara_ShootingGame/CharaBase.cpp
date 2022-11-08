@@ -8,6 +8,7 @@ BulletsBase** CharaBase::GetBullets()
 {
 	return bullets;
 }
+
 void CharaBase::DeleteBullet(int bulletNum)
 {
 	delete bullets[bulletNum];

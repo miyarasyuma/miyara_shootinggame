@@ -154,7 +154,9 @@
     <ClCompile Include="BulletsBase.cpp" />
     <ClCompile Include="CharaBase.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="E_ITEM_TYPE.cpp" />
     <ClCompile Include="GameMainScene.cpp" />
+    <ClCompile Include="ItemBase.cpp" />
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -168,7 +170,9 @@
     <ClInclude Include="CharaBase.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="E_ITEM_TYPE.h" />
     <ClInclude Include="GameMainScene.h" />
+    <ClInclude Include="ItemBase.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SceneManager.h" />
