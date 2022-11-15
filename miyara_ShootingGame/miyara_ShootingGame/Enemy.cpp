@@ -1,21 +1,58 @@
 #include"DxLib.h"
+#include"StraightBullets.h"
 #include "Enemy.h"
 
 Enemy::Enemy(T_Location location) :CharaBase(location, 20.f, T_Location{0,0.5}),hp(10),point(10)
 {
-
+	bullets = new BulletsBase * [30];
+	for (int i = 0; i < 30; i++)
+	{
+		bullets[i] = nullptr;
+	}
 }
 
 void Enemy::Update()
 {
 	T_Location newLocation = GetLocation();
-	newLocation.y += 0.5; 
+	newLocation.y += speed.y; 
 	SetLocation(newLocation);
+
+
+
+	int bulletCount;
+	for (bulletCount = 0; bulletCount < 30; bulletCount++)
+	{
+		if (bullets[bulletCount] == nullptr)
+		{
+			break;
+		}
+		bullets[bulletCount]->Update();
+
+		//画面外に行ったら弾を消す
+		if (bullets[bulletCount]->isScreenOut())//画面外で消えたか確かめる
+		{
+			DeleteBullet(bulletCount);
+			bulletCount--;
+		}
+	}
+	if (bulletCount < 30 && bullets[bulletCount] == nullptr)
+	{
+		bullets[bulletCount] = new StraightBullets(GetLocation(), T_Location{ 0,-1 });
+	}
 }
 
 void Enemy::Draw()
 {
-	DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(0, 0, 255));
+	DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(0, 0, 255));//敵の本体
+
+	for (int bulletCount = 0; bulletCount < 30; bulletCount++)
+	{
+		if (bullets[bulletCount] == nullptr)
+		{
+			break;
+		}
+		bullets[bulletCount]->Draw();
+	}
 }
 
 void Enemy::Hit(int damage)//Enemy

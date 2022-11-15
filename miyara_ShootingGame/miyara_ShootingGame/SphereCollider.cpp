@@ -38,6 +38,7 @@ bool SphereCollider::HitSphere(const SphereCollider* collider) const
 T_Location SphereCollider::GetLocation() const
 {
 	return location;
+
 }
 
 //’†SÀ•W‚Ìİ’è

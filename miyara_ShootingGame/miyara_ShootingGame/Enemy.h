@@ -5,9 +5,11 @@ class Enemy : public CharaBase
 private:
 	int hp;
 	int point;
+	
 
 public:
 	Enemy(T_Location location);
+
 
 public:
 	virtual void Update() override;

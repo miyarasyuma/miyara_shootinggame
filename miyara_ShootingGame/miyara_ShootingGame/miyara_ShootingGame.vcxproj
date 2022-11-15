@@ -160,6 +160,7 @@
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Recovery.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SphereCollider.cpp" />
     <ClCompile Include="StraightBullets.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="ItemBase.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Recovery.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SphereCollider.h" />
     <ClInclude Include="StraightBullets.h" />
