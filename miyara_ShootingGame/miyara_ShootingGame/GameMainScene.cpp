@@ -47,7 +47,7 @@ void GameMainScene::Update()
 		items[i]->Update();
 	}
 
-	BulletsBase** bullet = player->GetBullets();
+	BulletsBase** bullet = player->GetBullets();//プレイヤーの弾処理
 	for (enemyCount = 0; enemyCount < 10; enemyCount++)
 	{
 		if (enemy[enemyCount] == nullptr)
@@ -63,7 +63,6 @@ void GameMainScene::Update()
 
 			if (enemy[enemyCount]->HitSphere(bullet[bulletCount]))
 			{
-				//エネミーにプレイやーの弾がヒットしている
 
 				//エネミーにダメージを与えます。
 				enemy[enemyCount]->Hit(bullet[bulletCount]->GetDamage());
@@ -109,6 +108,38 @@ void GameMainScene::Update()
 		}
 	}
 
+	//たまループ参照
+	for (enemyCount = 0; enemyCount < 10; enemyCount++)
+	{
+		if (enemy[enemyCount] == nullptr)
+		{
+			break;
+		}
+		BulletsBase** bullet = enemy[enemyCount]->GetBullets();
+		for (int bulletCount = 0; bulletCount < 30; bulletCount++)
+		{
+			if (bullet[bulletCount] == nullptr)
+			{
+				break;
+			}
+
+			if (player->HitSphere(bullet[bulletCount]))
+			{
+				//プレイヤーにダメージを与えます
+				player->Hit(bullet[bulletCount]->GetDamage());
+
+				//弾を削除します
+				enemy[enemyCount]->DeleteBullet(bulletCount);
+				bulletCount--;
+
+				//プレイヤーのHPが0になったらプレイヤーを消す
+				if (player->LifeCheck())
+				{
+
+				}
+			}
+		}
+	}
 
 	for (int itemCount = 0; itemCount < 10; itemCount++)
 	{

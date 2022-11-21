@@ -10,4 +10,3 @@ public:
 	virtual void Draw() override;
 	virtual bool isScreenOut() override;
 };
-

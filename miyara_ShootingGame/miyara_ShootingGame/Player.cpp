@@ -90,7 +90,14 @@ void Player::Draw()
 
 void Player::Hit(int damage)
 {
-
+	if (0 < damage)
+	{
+		life -= damage;
+		if (life < 0)
+		{
+			life = 0;
+		}
+	}
 }
 
 void Player::Hit(class ItemBase* item)
