@@ -74,6 +74,8 @@ void Player::Draw()
 
 	#ifdef _DEBUG_MODE_
 	DrawFormatString(10, 10, GetColor(255, 255, 255), "life=%d", life);
+	DrawFormatString(10, 30, GetColor(255, 255, 255), "score=%d", score);
+
 	#endif
 
 	DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(255, 0, 0));

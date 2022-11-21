@@ -115,22 +115,22 @@ void GameMainScene::Update()
 		{
 			break;
 		}
-		BulletsBase** bullet = enemy[enemyCount]->GetBullets();
-		for (int bulletCount = 0; bulletCount < 30; bulletCount++)
+		bullet = enemy[enemyCount]->GetBullets();
+		for (int i = 0; i < 30; i++)
 		{
-			if (bullet[bulletCount] == nullptr)
+			if (bullet[i] == nullptr)
 			{
 				break;
 			}
 
-			if (player->HitSphere(bullet[bulletCount]))
+			if (player->HitSphere(bullet[i]))
 			{
 				//プレイヤーにダメージを与えます
-				player->Hit(bullet[bulletCount]->GetDamage());
+				player->Hit(bullet[i]->GetDamage());
 
 				//弾を削除します
-				enemy[enemyCount]->DeleteBullet(bulletCount);
-				bulletCount--;
+				enemy[enemyCount]->DeleteBullet(i);
+				i--;
 
 				//プレイヤーのHPが0になったらプレイヤーを消す
 				if (player->LifeCheck())
