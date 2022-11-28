@@ -4,6 +4,7 @@
 #include"Recovery.h"
 #include "DxLib.h"
 
+
 Player::Player(T_Location location) :CharaBase(location, 10.f, T_Location{2,2}),score(0),life(10)
 {
 
@@ -63,7 +64,8 @@ void Player::Update()
 	{
 		if (bulletCount < 30 && bullets[bulletCount] == nullptr)
 		{
-			bullets[bulletCount] = new StraightBullets(GetLocation(), T_Location{0,1});
+			bullets[bulletCount] = new StraightBullets(GetLocation(), T_Location{ 0,1 });
+
 		}
 	}
 }

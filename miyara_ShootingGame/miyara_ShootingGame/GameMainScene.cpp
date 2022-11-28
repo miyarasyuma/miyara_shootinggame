@@ -6,6 +6,7 @@ GameMainScene::GameMainScene()
 	T_Location location = T_Location{20,100};
 	player = new Player(location);
 
+
 	enemy = new Enemy * [10];
 	for (int i = 0; i < 10; i++)
 	{

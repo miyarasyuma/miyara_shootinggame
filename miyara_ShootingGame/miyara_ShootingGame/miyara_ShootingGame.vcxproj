@@ -163,6 +163,7 @@
     <ClCompile Include="Recovery.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SphereCollider.cpp" />
+    <ClCompile Include="SpiralBullet.cpp" />
     <ClCompile Include="StraightBullets.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +180,7 @@
     <ClInclude Include="Recovery.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SphereCollider.h" />
+    <ClInclude Include="SpiralBullet.h" />
     <ClInclude Include="StraightBullets.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
