@@ -1,22 +1,32 @@
 #include "SpiralBullet.h"
 #include"DxLib.h"
+
+#define _USE_MATH_DEFINES
 #include<math.h>
-#define PI 3.14159
 
-SpiralBullet::SpiralBullet(T_Location location, T_Location speed):BulletsBase(location, 5.f, 1, speed)
+
+SpiralBullet::SpiralBullet(T_Location location, float speed, int dgAngle) :BulletsBase(location, 5.f, 1, T_Location{ 0.0 })
 {
+	//degAngle‚ÅŠp“x‚ðŽæ‚Á‚Ä‹Ê‚ðo‚·
+	int deg = dgAngle % 360;
+	double rad = (M_PI / 180) * deg;
+	float x = (abs(deg) == 90 || abs(deg) == 270) ? 0 : cos(rad); //(ðŒŽ®)HTRUE:FALSE
+	float y = sin(rad);
 
+	this->speed = T_Location{ (speed * x),(speed * y) };
 }
 
 void SpiralBullet::Update()
 {
 	T_Location newLocation = GetLocation();
-	newLocation.y -= (speed.y * cos(30 * PI));
+	newLocation.x += speed.x;
+	newLocation.y += speed.y;
+	SetLocation(newLocation);
 }
 
 void SpiralBullet::Draw()
 {
-	DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(255, 255, 255));
+	DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(255, 0, 255));
 }
 
 bool SpiralBullet::isScreenOut()

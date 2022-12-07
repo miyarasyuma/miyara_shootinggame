@@ -3,10 +3,11 @@
 #include "SpiralBullet.h"
 #include "Enemy.h"
 
-Enemy::Enemy(T_Location location) :CharaBase(location, 20.f, T_Location{0,0.5}),hp(10),point(100)
+Enemy::Enemy(T_Location location) :CharaBase(location, 20.f, T_Location{0,1})
+,hp(10),point(100),shotNum(0)
 {
-	bullets = new BulletsBase * [30];
-	for (int i = 0; i < 30; i++)
+	bullets = new BulletsBase * [_ENEMY_BULLET_ALL_];
+	for (int i = 0; i < _ENEMY_BULLET_ALL_; i++)
 	{
 		bullets[i] = nullptr;
 	}
@@ -14,14 +15,14 @@ Enemy::Enemy(T_Location location) :CharaBase(location, 20.f, T_Location{0,0.5}),
 
 void Enemy::Update()
 {
-	T_Location newLocation = GetLocation();
+	/*T_Location newLocation = GetLocation();
 	newLocation.y += speed.y;
-	SetLocation(newLocation);
+	SetLocation(newLocation);*/
 
 
 
 	int bulletCount;
-	for (bulletCount = 0; bulletCount < 30; bulletCount++)
+	for (bulletCount = 0; bulletCount < _ENEMY_BULLET_ALL_; bulletCount++)
 	{
 		if (bullets[bulletCount] == nullptr)
 		{
@@ -36,9 +37,12 @@ void Enemy::Update()
 			bulletCount--;
 		}
 	}
-	if (bulletCount < 30 && bullets[bulletCount] == nullptr)
+	if (bulletCount < _ENEMY_BULLET_ALL_ && bullets[bulletCount] == nullptr)
 	{
-		bullets[bulletCount] = new SpiralBullet(GetLocation(), T_Location{ 0,-2 });
+		//enemy‚Ì’e–‹‚ð¶¬
+		bullets[bulletCount] = new SpiralBullet(GetLocation(),2.f,(10*shotNum));
+		shotNum++;
+		//bullets[bulletCount]=new StraightBullets(GetLocation(),T_Location)
 	}
 }
 
@@ -46,7 +50,7 @@ void Enemy::Draw()
 {
 	DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(0, 0, 255));//“G‚Ì–{‘Ì
 
-	for (int bulletCount = 0; bulletCount < 30; bulletCount++)
+	for (int bulletCount = 0; bulletCount < _ENEMY_BULLET_ALL_; bulletCount++)
 	{
 		if (bullets[bulletCount] == nullptr)
 		{

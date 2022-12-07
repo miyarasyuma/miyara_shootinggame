@@ -3,7 +3,7 @@
 class SpiralBullet : public BulletsBase
 {
 public:
-	SpiralBullet(T_Location location, T_Location speed);
+	SpiralBullet(T_Location location,float speed,int dgAngle);
 
 public:
 	virtual void Update() override;

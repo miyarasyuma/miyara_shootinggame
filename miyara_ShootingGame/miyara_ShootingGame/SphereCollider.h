@@ -16,7 +16,7 @@ public:
 	T_Location GetLocation() const;                       //中心座標の取得
 	void SetLocation(T_Location location);                //中心座標の設定
 
-	float GetRadius() const;                              //半径の取得
+	float GetRadius() const;                           //半径の取得
 
 };
 
