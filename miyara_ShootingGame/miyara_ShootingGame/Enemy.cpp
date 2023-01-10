@@ -5,14 +5,21 @@
 
 #define _ENEMY_BULLET_ALL_ 100
 
-T_Location locations[4] = {
-	{ 640. -10 },
-    { 640.200 },
-    { 1200.500 },
-    { 200.400 }
+T_Location locations[3] = {
+    { 640 ,200 },
+    { 1200,200 },
+    { 200 ,200 }
 };
 
-Enemy::Enemy(T_Location location) :CharaBase(location, 20.f, T_Location{0,1})
+int next[3] = {
+	1,
+	2,
+	1
+};
+
+int current = 0;
+
+Enemy::Enemy(T_Location location) :CharaBase(location, 20.f, T_Location{1.4,1})
 ,hp(10),point(100),shotNum(0)
 {
 	bullets = new BulletsBase * [30];
@@ -29,12 +36,7 @@ void Enemy::Update()
 		//T_Location newLocation = GetLocation();
 		//newLocation.y += speed.y;
 		//SetLocation(newLocation);
-	T_Location newLocation = GetLocation();
-		if (GetLocation().y <= locations[1].y)
-		{
-			newLocation.y += speed.y;
-			SetLocation(newLocation);
-		}
+	  Move();
 
 
 	int bulletCount;
@@ -98,4 +100,58 @@ bool Enemy::HpCheck()//Enemyの体力
 int Enemy::GetPoint()//
 {
 	return point;
+}
+
+void Enemy::Move()
+{
+	T_Location nextLocation = GetLocation();//今いる座標から取ってくる
+
+	if ((nextLocation.y == locations[current].y) &&  //同じ座標にいたら次の座標に移動する
+		(nextLocation.x == locations[current].x))
+	{
+		current = next[current];
+	}
+	else
+	{//目的地にいなかったら
+		if (nextLocation.y != locations[current].y)
+		{
+			if (nextLocation.y < locations[current].y)//今いる座標より大きかったら加算して行く
+			{
+				nextLocation.y += speed.y;
+				if ((GetLocation().y <= locations[current].y) && (locations[current].y <= nextLocation.y))//今の座標より目的地がでかいとき
+				{
+					nextLocation.y = locations[current].y;//目的地を飛び越えたときに代入して同じ座標にする
+				}
+			}
+			else
+			{
+				nextLocation.y -= speed.y;
+				if ((nextLocation.y <= locations[current].y) && (locations[current].y <= GetLocation().y))//今の座標より目的地がでかいとき
+				{
+					nextLocation.y=locations[current].y;//目的地を飛び越えたときに代入して同じ座標にする
+				}
+			}
+		}
+		if (nextLocation.x != locations[current].x)
+		{
+			if (nextLocation.x < locations[current].x)
+			{
+				nextLocation.x += speed.x;
+				if ((GetLocation().x <= locations[current].x) && (locations[current].x <= nextLocation.x))
+				{
+					nextLocation.x = locations[current].x;
+				}
+			}
+			else
+			{
+				nextLocation.x -= speed.x;
+				if((nextLocation.x<= locations[current].x)&&(locations[current].x <= GetLocation().x))
+					{
+					nextLocation.x = locations[current].x;
+                    }
+			}
+		}
+	}
+
+	SetLocation(nextLocation);
 }
